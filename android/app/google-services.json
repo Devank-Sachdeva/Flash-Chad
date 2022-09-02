@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "882651637941",
+    "project_id": "flash-chad",
+    "storage_bucket": "flash-chad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882651637941:android:21622b8521cd74b8f2b6fc",
+        "android_client_info": {
+          "package_name": "com.devankS.flashchad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882651637941-nnk84jqncvaarks2drak6sqalqmtn9mb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHwI5CMwUplobC064uqfmmR_WrJ02IIfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882651637941-nnk84jqncvaarks2drak6sqalqmtn9mb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
