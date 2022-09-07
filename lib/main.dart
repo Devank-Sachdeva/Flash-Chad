@@ -4,12 +4,19 @@ import 'package:flashchad/screens/welcome_screen.dart';
 import 'package:flashchad/screens/login_screen.dart';
 import 'package:flashchad/screens/registration_screen.dart';
 import 'package:flashchad/screens/chat_screen.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  // final prefs = await SharedPreferences.getInstance();
+  // String? str = prefs.getString('LoggedInUser');
+  // if (str == null) print('yes');
+  // print(str);
 
-  runApp(FlashChat());
+  runApp(
+    FlashChat(),
+  );
 }
 
 class FlashChat extends StatelessWidget {

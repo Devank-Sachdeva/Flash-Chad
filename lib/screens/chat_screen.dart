@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flashchad/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 late User loggedInUser;
 final _firestore = FirebaseFirestore.instance;
@@ -32,7 +33,6 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-
     getCurrentUser();
   }
 
@@ -52,8 +52,11 @@ class _ChatScreenState extends State<ChatScreen> {
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.close),
-              onPressed: () {
+              onPressed: () async {
                 _auth.signOut();
+                final prefs = await SharedPreferences.getInstance();
+                print(prefs.getString('LoggedInUser'));
+                await prefs.setString('LoggedInUser', 'signed out');
                 Navigator.pop(context);
               }),
         ],
@@ -74,8 +77,13 @@ class _ChatScreenState extends State<ChatScreen> {
                   Expanded(
                     child: TextField(
                       controller: textEditingController,
-                      onChanged: (value) {
+                      onChanged: (value) async {
                         senderMessage = value;
+                        if (value == 'devank') {
+                          final prefs = await SharedPreferences.getInstance();
+                          prefs.remove('LoggedInUser');
+                          print('done');
+                        }
                       },
                       decoration: kMessageTextFieldDecoration,
                     ),

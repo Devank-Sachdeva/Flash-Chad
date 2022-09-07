@@ -40,6 +40,7 @@ dependencies:
   firebase_auth: ^3.7.0
   firebase_core: ^1.21.1
   modal_progress_hud_nsn: ^0.3.0
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
