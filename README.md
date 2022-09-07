@@ -1,16 +1,8 @@
 # flashchad
 
-A new Flutter project.
+A Insta-Chatting App
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Welcome-Screeen](https://github.com/Devank-Sachdeva/Flash-Chad/blob/master/Screenshots/welcome_screen.png?raw=true)
+![Login-Screeen](https://github.com/Devank-Sachdeva/Flash-Chad/blob/master/Screenshots/login_screen.png?raw=true)
+![Register-Screeen](https://github.com/Devank-Sachdeva/Flash-Chad/blob/master/Screenshots/register_screen.png?raw=true)
+![Chat-Screeen](https://github.com/Devank-Sachdeva/Flash-Chad/blob/master/Screenshots/chat_screen.png?raw=true)
