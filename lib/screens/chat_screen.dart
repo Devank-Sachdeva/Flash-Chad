@@ -57,7 +57,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 final prefs = await SharedPreferences.getInstance();
                 print(prefs.getString('LoggedInUser'));
                 await prefs.setString('LoggedInUser', 'signed out');
-                Navigator.pop(context);
+                if (mounted){Navigator.pop(context);}
               }),
         ],
         title: Center(child: Text('⚡️Chat')),
@@ -92,7 +92,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: () {
                       textEditingController.clear();
                       addMessage(senderMessage);
-                      // _firestore.collection('bible').add({'sinner': loggedInUser.email, 'sins': senderMessage});
+                      _firestore.collection('bible').add({'sinner': loggedInUser.email, 'sins': senderMessage});
                     },
                     child: Text(
                       'Send',

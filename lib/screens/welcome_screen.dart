@@ -12,7 +12,7 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateMixin {
+class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin {
   late Animation animation;
   late AnimationController controller;
 
@@ -21,7 +21,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
     String? str = prefs.getString('LoggedInUser');
     print(str);
 
-    if (str != null && str != 'signed out') {
+    if (str != null && str != 'signed out' && mounted) {
       Navigator.pushNamed(context, ChatScreen.id);
     }
   }

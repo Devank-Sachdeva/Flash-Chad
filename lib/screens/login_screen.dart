@@ -156,7 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           final prefs = await SharedPreferences.getInstance();
                           String userEmail = goodUser.user?.email ?? ' ';
                           await prefs.setString('LoggedInUser', userEmail);
-                          Navigator.pushNamed(context, ChatScreen.id);
+                          if (mounted){Navigator.pushNamed(context, ChatScreen.id);}
                           setState(() {
                             showSpinner = false;
                           });

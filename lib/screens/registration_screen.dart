@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flashchad/components/roundButton.dart';
 import 'package:flashchad/constants.dart';
@@ -21,8 +22,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   bool passLooking = false;
   bool emailLooking = false;
   final _auth = FirebaseAuth.instance;
-  late String email;
-  late String password;
+  String? email;
+  String? password;
 
   String? get _errorPassText {
     final text = _passController.value.text;
@@ -60,16 +61,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   Widget verify() {
     if (email == null || password == null) {
       return AlertDialog(
         title: Text('Please fill the details properly'),
-        content: Text('Chutiya hai kya'),
+        content: Text('Invalid Details'),
       );
     }
     return Container();
@@ -130,25 +126,29 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               RoundButton(
                 colour: Colors.blueAccent,
                 titleText: 'Register',
-                onPressFunction: (emailLooking && passLooking)
+                onPressFunction: (emailLooking && passLooking && email !=null && password != null)
                     ? () async {
                         setState(() {
                           showSpinner = true;
                         });
-                        // verify();
+
                         try {
-                          final newUser = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+                          final newUser =
+                              await _auth.createUserWithEmailAndPassword(
+                                  email: email!, password: password!);
                           final prefs = await SharedPreferences.getInstance();
                           String userEmail = newUser.user?.email ?? ' ';
                           await prefs.setString('LoggedInUser', userEmail);
-
-                          Navigator.pushNamed(context, ChatScreen.id);
+                          if (mounted) {
+                            Navigator.pushNamed(context, ChatScreen.id);
+                          }
                           setState(() {
                             showSpinner = false;
                           });
                         } catch (e) {
-                          print('error aayi bsdk');
-                          print(e);
+                          if (kDebugMode) {
+                            print(e);
+                          }
                           setState(() {
                             showSpinner = false;
                           });
